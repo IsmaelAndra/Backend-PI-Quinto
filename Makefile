@@ -3,6 +3,6 @@ build-image:
 volume:
 	@ docker volume create pg_salud360
 deploy:
-	@ docker stack deploy --with-registry-auth -c devops/stack.yml kuyayana
+	@ docker stack deploy --with-registry-auth -c devops/stack.yml salud360
 rm:
 	@ docker stack rm salud360
