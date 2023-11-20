@@ -25,9 +25,9 @@ public class Pay {
     @Column
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime datetime_pay = LocalDateTime.now();
-    @Column
+    @Column(length = 30)
     private String payment_method;
-    @Column
+    @Column(length = 30)
     private String status_pay;
 
     public Pay() {}
@@ -68,9 +68,6 @@ public class Pay {
     public void setStatus_pay(String status_pay) {
         this.status_pay = status_pay;
     }
-
-    // @OneToOne(mappedBy = "preparation")
-    // private Pay pay;
 
     @OneToOne
     @JoinColumn(name = "id_medical", referencedColumnName = "id_medical")

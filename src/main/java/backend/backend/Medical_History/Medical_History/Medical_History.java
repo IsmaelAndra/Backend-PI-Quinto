@@ -33,7 +33,4 @@ public class Medical_History {
     @ManyToOne
     @JoinColumn(name = "id_preparation", referencedColumnName = "id_preparation")
     private Preparation preparation;
-
-    // @OneToMany(mappedBy = "medical_history", cascade = CascadeType.ALL)
-    // private List<Diagnosis> diagnosis;
 }

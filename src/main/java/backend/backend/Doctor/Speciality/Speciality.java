@@ -15,9 +15,9 @@ public class Speciality {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id_speciality;
-    @Column
+    @Column(length = 100, unique = true)
     private String name_speciality;
-    @Column
+    @Column(length = 100)
     private String description_speciality;
 
     public Speciality(){}
@@ -50,7 +50,4 @@ public class Speciality {
     public void setDescription_speciality(String description_speciality) {
         this.description_speciality = description_speciality;
     }
-
-    // @OneToMany(mappedBy = "speciality", cascade = CascadeType.ALL)
-    // private List<Doctor> doctor;
 }

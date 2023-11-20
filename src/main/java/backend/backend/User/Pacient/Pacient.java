@@ -21,22 +21,22 @@ public class Pacient {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
     private Long id_pacient;
-    @Column(unique = true)
+    @Column(length = 30, unique = true)
     private Integer identification_pacient;
-    @Column
+    @Column(length = 30)
     private String name_pacient;
-    @Column
+    @Column(length = 30)
     private String lastname_pacient;
     @Column
     @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
     private LocalDate dateofbirth_pacient;
-    @Column
+    @Column(length = 30)
     private String gender_pacient;
-    @Column
+    @Column(length = 30)
     private String address_pacient;
-    @Column
+    @Column(length = 9)
     private Integer phone_pacient;
-    @Column
+    @Column(length = 5)
     private String blood_type_pacient;
 
     public Pacient() {}
@@ -127,7 +127,4 @@ public class Pacient {
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName="id_user")
     private User user;
-
-    // @OneToMany(mappedBy = "pacient", cascade = CascadeType.ALL)
-    // private List<Medical_Appointment> medical_appointment;
 }

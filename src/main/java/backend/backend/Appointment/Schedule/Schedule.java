@@ -1,5 +1,8 @@
 package backend.backend.Appointment.Schedule;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,16 +19,18 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id_schedule;
-    @Column
+    @Column(length = 30)
     private String weekday_schedule;
     @Column
-    private String startime_schedule;
+    @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
+    private LocalTime startime_schedule;
     @Column
-    private String departime_schedule;
+    @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
+    private LocalTime departime_schedule;
 
     public Schedule() {}
 
-    public Schedule(String weekday_schedule, String startime_schedule, String departime_schedule) {
+    public Schedule(String weekday_schedule, LocalTime startime_schedule, LocalTime departime_schedule) {
         this.weekday_schedule = weekday_schedule;
         this.startime_schedule = startime_schedule;
         this.departime_schedule = departime_schedule;
@@ -47,22 +52,19 @@ public class Schedule {
         this.weekday_schedule = weekday_schedule;
     }
 
-    public String getStartime_schedule() {
+    public LocalTime getStartime_schedule() {
         return startime_schedule;
     }
 
-    public void setStartime_schedule(String startime_schedule) {
+    public void setStartime_schedule(LocalTime startime_schedule) {
         this.startime_schedule = startime_schedule;
     }
 
-    public String getDepartime_schedule() {
+    public LocalTime getDepartime_schedule() {
         return this.departime_schedule;
     }
 
-    public void setDepartime_schedule(String departime_schedule) {
+    public void setDepartime_schedule(LocalTime departime_schedule) {
         this.departime_schedule = departime_schedule;
     }
-
-    // @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
-    // private List<Medical_Appointment> medical_appointment;
 }

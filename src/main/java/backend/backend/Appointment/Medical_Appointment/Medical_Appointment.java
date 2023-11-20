@@ -1,7 +1,6 @@
 package backend.backend.Appointment.Medical_Appointment;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import backend.backend.Appointment.Consultory.Consultory;
@@ -29,21 +28,17 @@ public class Medical_Appointment {
     @Column
     @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
     private LocalDate date_medical;
-    @Column
-    @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
-    private LocalTime time_medical;
-    @Column
+    @Column(length = 30)
     private String speciality_medical;
-    @Column
+    @Column(length = 30)
     private String status_medical;
-    @Column
+    @Column(length = 100)
     private String reason_medical;
 
     public Medical_Appointment() {}
 
-    public Medical_Appointment(LocalDate date_medical, LocalTime time_medical, String speciality_medical, String status_medical, String reason_medical) {
+    public Medical_Appointment(LocalDate date_medical, String speciality_medical, String status_medical, String reason_medical) {
         this.date_medical = date_medical;
-        this.time_medical = time_medical;
         this.speciality_medical = speciality_medical;
         this.status_medical = status_medical;
         this.reason_medical = reason_medical;
@@ -63,14 +58,6 @@ public class Medical_Appointment {
 
     public void setDate_medical(LocalDate date_medical) {
         this.date_medical = date_medical;
-    }
-
-    public LocalTime getTime_medical() {
-        return time_medical;
-    }
-
-    public void setTime_medical(LocalTime time_medical) {
-        this.time_medical = time_medical;
     }
 
     public String getSpeciality_medical() {
@@ -112,10 +99,4 @@ public class Medical_Appointment {
     @ManyToOne
     @JoinColumn(name = "id_doctor", referencedColumnName="id_doctor")
     private Doctor doctor;
-
-    // @OneToMany(mappedBy = "medical_appointment", cascade = CascadeType.ALL)
-    // private List<Notification> notification;
-
-    // @OneToOne(mappedBy = "medical_appointment")
-    // private Pay pay;
 }

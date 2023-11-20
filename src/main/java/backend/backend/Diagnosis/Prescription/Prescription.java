@@ -19,11 +19,11 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id_prescription;
-    @Column
+    @Column(length = 200)
     private String medicine_prescription;
-    @Column
+    @Column(length = 200)
     private String dose_prescription;
-    @Column
+    @Column(length = 500)
     private String instructions_prescription;
 
     public Prescription() {}

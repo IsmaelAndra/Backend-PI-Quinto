@@ -19,22 +19,22 @@ public class Preparation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id_preparation;
-    @Column
+    @Column(length = 400)
     private String diagnostic_preparation;
-    @Column
+    @Column(length = 300)
     private String treatment_preparation;
-    @Column
-    private Integer height_preparation;
-    @Column 
-    private Integer weight_preparation;
-    @Column
-    private Integer oximetro_preparation;
-    @Column
+    @Column(length = 10)
+    private String height_preparation;
+    @Column(length = 10)
+    private String weight_preparation;
+    @Column(length = 10)
+    private String oximetro_preparation;
+    @Column(length = 10)
     private Integer tensiometro_preparation;
 
     public Preparation() {}
 
-    public Preparation(String diagnostic_preparation, String treatment_preparation, Integer height_preparation, Integer weight_preparation, Integer oximetro_preparation, Integer tensiometro_preparation) {
+    public Preparation(String diagnostic_preparation, String treatment_preparation, String height_preparation, String weight_preparation, String oximetro_preparation, Integer tensiometro_preparation) {
         this.diagnostic_preparation = diagnostic_preparation;
         this.treatment_preparation = treatment_preparation;
         this.height_preparation = height_preparation;
@@ -67,27 +67,27 @@ public class Preparation {
         this.treatment_preparation = treatment_preparation;
     }
 
-    public Integer getHeight_preparation() {
+    public String getHeight_preparation() {
         return height_preparation;
     }
 
-    public void setHeight_preparation(Integer height_preparation) {
+    public void setHeight_preparation(String height_preparation) {
         this.height_preparation = height_preparation;
     }
 
-    public Integer getWeight_preparation() {
+    public String getWeight_preparation() {
         return weight_preparation;
     }
 
-    public void setWeight_preparation(Integer weight_preparation) {
+    public void setWeight_preparation(String weight_preparation) {
         this.weight_preparation = weight_preparation;
     }
 
-    public Integer getOximetro_preparation() {
+    public String getOximetro_preparation() {
         return oximetro_preparation;
     }
 
-    public void setOximetro_preparation(Integer oximetro_preparation) {
+    public void setOximetro_preparation(String oximetro_preparation) {
         this.oximetro_preparation = oximetro_preparation;
     }
 
@@ -102,7 +102,4 @@ public class Preparation {
     @OneToOne
     @JoinColumn(name = "id_pay", referencedColumnName = "id_pay")
     private Pay pay;
-
-    // @OneToMany(mappedBy = "preparation", cascade = CascadeType.ALL)
-    // private List<Medical_History> medical_history;
 }

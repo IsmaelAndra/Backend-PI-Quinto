@@ -1,5 +1,8 @@
 package backend.backend.Appointment.Notification;
 
+import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import backend.backend.Appointment.Medical_Appointment.Medical_Appointment;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,16 +22,17 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id_notification;
-    @Column
+    @Column(length = 30)
     private String type_notification;
-    @Column
+    @Column(length = 200)
     private String messeger_notification;
     @Column
-    private String shopping_date_notification;
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    private LocalDateTime shopping_date_notification = LocalDateTime.now();
 
     public Notification() {}
 
-    public Notification(String type_notification, String messenger_notification, String shopping_date_notification) {
+    public Notification(String type_notification, String messenger_notification, LocalDateTime shopping_date_notification) {
         this.type_notification = type_notification;
         this.messeger_notification = messenger_notification;
         this.shopping_date_notification = shopping_date_notification;
@@ -58,11 +62,11 @@ public class Notification {
         this.messeger_notification = messeger_notification;
     }
 
-    public String getShopping_date_notification() {
+    public LocalDateTime getShopping_date_notification() {
         return shopping_date_notification;
     }
 
-    public void setShopping_date_notification(String shopping_date_notification) {
+    public void setShopping_date_notification(LocalDateTime shopping_date_notification) {
         this.shopping_date_notification = shopping_date_notification;
     }
 

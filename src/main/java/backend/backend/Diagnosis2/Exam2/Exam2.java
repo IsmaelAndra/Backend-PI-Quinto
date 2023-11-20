@@ -23,12 +23,12 @@ public class Exam2 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id_exam2;
-    @Column
+    @Column(length = 100)
     private String type_exam2;
     @Column
     @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
     private LocalDate date_exam2;
-    @Column
+    @Column(length = 400)
     private String results_exam2;
 
     public Exam2() {}

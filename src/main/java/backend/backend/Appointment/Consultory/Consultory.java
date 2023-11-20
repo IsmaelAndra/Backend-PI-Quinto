@@ -16,11 +16,11 @@ public class Consultory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id_consultory;
-    @Column
+    @Column(length = 30)
     private String name_consultory;
-    @Column
+    @Column(length = 30)
     private String address_consultory;
-    @Column
+    @Column(length = 9)
     private Integer phone_consultory;
 
     public Consultory() {}
@@ -61,7 +61,4 @@ public class Consultory {
     public void setPhone_consultory(Integer phone_consultory) {
         this.phone_consultory = phone_consultory;
     }
-
-    // @OneToMany(mappedBy = "consultory", cascade = CascadeType.ALL)
-    // private List<Medical_Appointment> medical_appointment;
 }

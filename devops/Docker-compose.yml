@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    image: salud360:1
+    environment:
+    - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - target: 8093
+        published: 8093
+        protocol: tcp
+        mode: host
+    networks:
+      - tendencias_instituto_net
+  dbclases:
+    image: postgres:15.0-bullseye
+    environment:
+      - TZ=America/Guayaquil
+      - POSTGRES_DB=backend_quinto
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - pg_salud360:/var/lib/postgresql/data/pgdata
+    networks:
+      - tendencias_instituto_net
+           
+volumes:
+  pg_salud360:
+    external: true
+
+networks:
+  tendencias_instituto_net:
+    external: true
+
+secrets:
+  db_dev_pass:
+    external: true  

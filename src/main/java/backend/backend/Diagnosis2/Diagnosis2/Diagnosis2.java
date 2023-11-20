@@ -19,7 +19,7 @@ public class Diagnosis2 {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
     private Long id_diagnosis2;
-    @Column
+    @Column(length = 400)
     private String description_diagnosis2;
 
     public Diagnosis2() {}
@@ -43,9 +43,6 @@ public class Diagnosis2 {
     public void setDescription_diagnosis2(String description_diagnosis2) {
         this.description_diagnosis2 = description_diagnosis2;
     }
-
-    // @OneToMany(mappedBy = "diagnosis2", cascade = CascadeType.ALL)
-    // private List <Exam2> exam2;
 
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
