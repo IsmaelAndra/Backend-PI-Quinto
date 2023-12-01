@@ -20,12 +20,13 @@ public class Speciality {
     @Column(length = 100)
     private String description_speciality;
 
-    public Speciality(){}
-
-    public Speciality(String name_speciality, String description_speciality) {
+    public Speciality(long id_speciality, String name_speciality, String description_speciality) {
+        this.id_speciality = id_speciality;
         this.name_speciality = name_speciality;
         this.description_speciality = description_speciality;
     }
+
+    public Speciality(){}
 
     public long getId_speciality() {
         return id_speciality;

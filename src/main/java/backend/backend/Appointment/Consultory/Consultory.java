@@ -23,12 +23,18 @@ public class Consultory {
     @Column(length = 9)
     private Integer phone_consultory;
 
-    public Consultory() {}
-    public Consultory(String name_consultory, String address_consultory, Integer phone_consultory){
+    public Consultory(String name_consultory) {
+        this.name_consultory = name_consultory;
+    }
+
+    public Consultory(Long id_consultory, String name_consultory, String address_consultory, Integer phone_consultory){
+        this.id_consultory = id_consultory;
         this.name_consultory = name_consultory;
         this.address_consultory = address_consultory;
         this.phone_consultory = phone_consultory;
     }
+
+    public Consultory() {}
 
     public Long getId_consultory() {
         return id_consultory;

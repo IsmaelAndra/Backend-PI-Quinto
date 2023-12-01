@@ -22,11 +22,12 @@ public class Diagnosis {
     @Column(length = 400)
     private String description_diagnosis;
 
-    public Diagnosis() {}
-
-    public Diagnosis(String description_diagnosis) {
+    public Diagnosis(Long id_diagnosis, String description_diagnosis) {
+        this.id_diagnosis = id_diagnosis;
         this.description_diagnosis = description_diagnosis;
     }
+
+    public Diagnosis() {}
 
     public Long getId_diagnosis() {
         return id_diagnosis;

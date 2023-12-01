@@ -31,13 +31,14 @@ public class Exam {
     @Column(length = 400)
     private String results_exam;
 
-    public Exam() {}
-
-    public Exam(String type_exam, LocalDate date_exam, String results_exam) {
+    public Exam(Long id_exam, String type_exam, LocalDate date_exam, String results_exam) {
+        this.id_exam = id_exam;
         this.type_exam = type_exam;
         this.date_exam = date_exam;
         this.results_exam = results_exam;
     }
+
+    public Exam() {}
 
     public Long getId_exam() {
         return id_exam;

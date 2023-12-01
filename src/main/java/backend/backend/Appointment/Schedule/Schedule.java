@@ -18,7 +18,7 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private long id_schedule;
+    private Long id_schedule;
     @Column(length = 30)
     private String weekday_schedule;
     @Column
@@ -28,13 +28,18 @@ public class Schedule {
     @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalTime departime_schedule;
 
-    public Schedule() {}
+    public Schedule(String weekday_schedule) {
+        this.weekday_schedule = weekday_schedule;
+    }
 
-    public Schedule(String weekday_schedule, LocalTime startime_schedule, LocalTime departime_schedule) {
+    public Schedule(Long id_schedule, String weekday_schedule, LocalTime startime_schedule, LocalTime departime_schedule) {
+        this.id_schedule = id_schedule;
         this.weekday_schedule = weekday_schedule;
         this.startime_schedule = startime_schedule;
         this.departime_schedule = departime_schedule;
     }
+
+    public Schedule() {}
 
     public long getId_schedule() {
         return id_schedule;

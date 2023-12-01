@@ -21,12 +21,13 @@ public class Rol {
     @Column(length = 100)
     private String description_rol;
 
-    public Rol() {}
-
-    public Rol(String name_rol, String description_rol) {
+    public Rol(long id_rol, String name_rol, String description_rol) {
+        this.id_rol = id_rol;
         this.name_rol = name_rol;
         this.description_rol = description_rol;
     }
+
+    public Rol() {}
 
     public long getId_rol() {
         return id_rol;

@@ -24,6 +24,8 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private long id_doctor;
+    @Column(length = 50)
+    private String working_day_doctor;
     @Column
     @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalTime startime_doctor;
@@ -31,12 +33,18 @@ public class Doctor {
     @JsonFormat(pattern = "HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalTime departime_doctor;
 
-    public Doctor(){}
+    public Doctor(String working_day_doctor) {
+        this.working_day_doctor = working_day_doctor;
+    }
 
-    public Doctor(LocalTime startime_doctor, LocalTime departime_doctor){
+    public Doctor(long id_doctor, String working_day_doctor, LocalTime startime_doctor, LocalTime departime_doctor){
+        this.id_doctor = id_doctor;
+        this.working_day_doctor = working_day_doctor;
         this.startime_doctor = startime_doctor;
         this.departime_doctor = departime_doctor;
     }
+
+    public Doctor(){}
 
     public long getId_doctor(){
         return this.id_doctor;
@@ -44,6 +52,14 @@ public class Doctor {
 
     public void setId_doctor(long id_doctor) {
         this.id_doctor = id_doctor;
+    }
+
+    public String getWorking_day_doctor() {
+        return this.working_day_doctor;
+    }
+
+    public void setWorking_day_doctor(String working_day_doctor) {
+        this.working_day_doctor = working_day_doctor;
     }
 
     public LocalTime getStartime_doctor() {

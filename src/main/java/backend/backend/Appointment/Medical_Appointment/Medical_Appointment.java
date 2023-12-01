@@ -7,6 +7,7 @@ import backend.backend.Appointment.Consultory.Consultory;
 import backend.backend.Appointment.Schedule.Schedule;
 import backend.backend.Doctor.Doctor.Doctor;
 import backend.backend.User.Pacient.Pacient;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Medical_Appointment {
     @Column
     private Long id_medical;
     @Column
-    @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private LocalDate date_medical;
     @Column(length = 30)
     private String speciality_medical;
@@ -35,14 +36,15 @@ public class Medical_Appointment {
     @Column(length = 100)
     private String reason_medical;
 
-    public Medical_Appointment() {}
-
-    public Medical_Appointment(LocalDate date_medical, String speciality_medical, String status_medical, String reason_medical) {
+    public Medical_Appointment(Long id_medical, LocalDate date_medical, String speciality_medical, String status_medical, String reason_medical) {
+        this.id_medical = id_medical;
         this.date_medical = date_medical;
         this.speciality_medical = speciality_medical;
         this.status_medical = status_medical;
         this.reason_medical = reason_medical;
     }
+
+    public Medical_Appointment() {}
 
     public Long getId_medical() {
         return id_medical;
@@ -84,19 +86,19 @@ public class Medical_Appointment {
         this.reason_medical = reason_medical;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_schedule", referencedColumnName="id_schedule")
     private Schedule schedule;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_consultory", referencedColumnName="id_consultory")
     private Consultory consultory;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_pacient", referencedColumnName="id_pacient")
     private Pacient pacient;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_doctor", referencedColumnName="id_doctor")
     private Doctor doctor;
 }

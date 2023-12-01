@@ -28,14 +28,30 @@ public class Pay {
     @Column(length = 30)
     private String payment_method;
     @Column(length = 30)
+    private String card_name;
+    @Column(length = 16)
+    private Number card_number;
+    @Column(length = 2)
+    private Number expiration_month;
+    @Column(length = 2)
+    private Number expiration_year;
+    @Column(length = 3)
+    private Number security_code;
+    @Column(length = 30)
     private String status_pay;
 
-    public Pay() {}
-
-    public Pay(String payment_method, String status_pay) {
+    public Pay(Long id_pay, String payment_method, String card_name, Number card_number, Number expiration_month, Number expiration_year, Number security_code, String status_pay) {
+        this.id_pay = id_pay;
         this.payment_method = payment_method;
+        this.card_name = card_name;
+        this.card_number = card_number;
+        this.expiration_month = expiration_month;
+        this.expiration_year = expiration_year;
+        this.security_code = security_code;
         this.status_pay = status_pay;
     }
+
+    public Pay() {}
 
     public Long getId_pay() {
         return id_pay;
@@ -59,6 +75,46 @@ public class Pay {
 
     public void setPayment_method(String payment_method) {
         this.payment_method = payment_method;
+    }
+
+    public String getCar_name() {
+        return card_name;
+    }
+
+    public void setCard_name(String card_name) {
+        this.card_name = card_name;
+    }
+
+    public Number getCard_number() {
+        return card_number;
+    }
+
+    public void setCard_number(Number card_number) {
+        this.card_number = card_number;
+    }
+
+    public Number getExpiration_month(){
+        return expiration_month;
+    }
+
+    public void setExpiration_month(Number expiration_month) {
+        this.expiration_month = expiration_month;
+    }
+
+    public Number getExpiration_year(){
+        return expiration_year;
+    }
+
+    public void setExpiration_year(Number expiration_year) {
+        this.expiration_year = expiration_year;
+    }
+
+    public Number getSecurity_code() {
+        return security_code;
+    }
+
+    public void setSecurity_code(Number security_code) {
+        this.security_code = security_code;
     }
 
     public String getStatus_pay() {

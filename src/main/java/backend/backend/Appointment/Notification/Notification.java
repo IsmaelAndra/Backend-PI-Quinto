@@ -30,13 +30,14 @@ public class Notification {
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime shopping_date_notification = LocalDateTime.now();
 
-    public Notification() {}
-
-    public Notification(String type_notification, String messenger_notification, LocalDateTime shopping_date_notification) {
+    public Notification(Long id_notification, String type_notification, String messenger_notification, LocalDateTime shopping_date_notification) {
+        this.id_notification = id_notification;
         this.type_notification = type_notification;
         this.messeger_notification = messenger_notification;
         this.shopping_date_notification = shopping_date_notification;
     }
+
+    public Notification() {}
 
     public Long getId_notification() {
         return id_notification;

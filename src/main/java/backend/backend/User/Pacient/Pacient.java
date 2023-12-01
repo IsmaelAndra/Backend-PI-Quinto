@@ -39,9 +39,12 @@ public class Pacient {
     @Column(length = 5)
     private String blood_type_pacient;
 
-    public Pacient() {}
+    public Pacient(Integer phone_pacient) {
+        this.phone_pacient = phone_pacient;
+    }
 
-    public Pacient(Integer identification_pacient, String name_pacient, String lastname_pacient, LocalDate dateofbirth_pacient, String gender_pacient, String address_pacient, Integer phone_pacient, String blood_type_pacient) {
+    public Pacient(Long id_pacient, Integer identification_pacient, String name_pacient, String lastname_pacient, LocalDate dateofbirth_pacient, String gender_pacient, String address_pacient, Integer phone_pacient, String blood_type_pacient) {
+        this.id_pacient = id_pacient;
         this.identification_pacient = identification_pacient;
         this.name_pacient = name_pacient;
         this.lastname_pacient = lastname_pacient;
@@ -51,6 +54,8 @@ public class Pacient {
         this.phone_pacient = phone_pacient;
         this.blood_type_pacient = blood_type_pacient;
     }
+
+    public Pacient() {}
 
     public Long getId_pacient() {
         return id_pacient;

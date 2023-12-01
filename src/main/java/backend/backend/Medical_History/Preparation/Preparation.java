@@ -34,7 +34,8 @@ public class Preparation {
 
     public Preparation() {}
 
-    public Preparation(String diagnostic_preparation, String treatment_preparation, String height_preparation, String weight_preparation, String oximetro_preparation, Integer tensiometro_preparation) {
+    public Preparation(Long id_preparation, String diagnostic_preparation, String treatment_preparation, String height_preparation, String weight_preparation, String oximetro_preparation, Integer tensiometro_preparation) {
+        this.id_preparation = id_preparation;
         this.diagnostic_preparation = diagnostic_preparation;
         this.treatment_preparation = treatment_preparation;
         this.height_preparation = height_preparation;

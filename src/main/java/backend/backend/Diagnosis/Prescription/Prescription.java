@@ -26,13 +26,14 @@ public class Prescription {
     @Column(length = 500)
     private String instructions_prescription;
 
-    public Prescription() {}
-
-    public Prescription(String medicine_prescription, String dose_prescription, String instructions_prescription) {
+    public Prescription(Long id_prescription, String medicine_prescription, String dose_prescription, String instructions_prescription) {
+        this.id_prescription = id_prescription;
         this.medicine_prescription = medicine_prescription;
         this.dose_prescription = dose_prescription;
         this.instructions_prescription = instructions_prescription;
     }
+
+    public Prescription() {}
 
     public Long getId_prescription() {
         return id_prescription;

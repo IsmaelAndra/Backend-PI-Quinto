@@ -20,6 +20,10 @@ public class Medical_History {
     @Column
     private Long id_medical_history;
 
+    public Medical_History(Long id_medical_history) {
+        this.id_medical_history = id_medical_history;
+    }
+
     public Medical_History() {}
 
     public Long getId_medical_history() {

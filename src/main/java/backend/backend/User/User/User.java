@@ -43,9 +43,8 @@ public class User {
     @Column(length = 15)
     private String pass_verification_user;
 
-    public User(){}
-
-    public User(String photo_user,String name_user, String lastname_user, LocalDate dateofbirth_user, String gender_user, String address_user, Integer phone_user, String email_user, String password_user, String pass_verification_user) {
+    public User(long id_user, String photo_user,String name_user, String lastname_user, LocalDate dateofbirth_user, String gender_user, String address_user, Integer phone_user, String email_user, String password_user, String pass_verification_user) {
+        this.id_user = id_user;
         this.photo_user = photo_user;
         this.name_user = name_user;
         this.lastname_user = lastname_user;
@@ -57,6 +56,8 @@ public class User {
         this.password_user = password_user;
         this.pass_verification_user = pass_verification_user;
     }
+
+    public User(){}
 
     public long getId_user() {
         return id_user;
