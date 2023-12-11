@@ -77,7 +77,7 @@ public class Pay {
         this.payment_method = payment_method;
     }
 
-    public String getCar_name() {
+    public String getCard_name() {
         return card_name;
     }
 
