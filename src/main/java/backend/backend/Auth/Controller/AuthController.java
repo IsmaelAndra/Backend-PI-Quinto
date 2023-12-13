@@ -7,6 +7,7 @@ import backend.backend.Auth.Request.RegisterRequest;
 import backend.backend.Auth.Response.AuthResponse;
 import backend.backend.Auth.Services.AuthService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
+    @Autowired
     private final AuthService authService;
 
     @PostMapping(value="login")

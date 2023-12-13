@@ -25,12 +25,13 @@ public class SecurityConfig {
     {
         return http
         .csrf(csrf -> 
-            csrf
-            .disable())
+        csrf
+        .disable())
         .authorizeHttpRequests(authRequest ->
           authRequest
-            .requestMatchers("/**").permitAll()
-            .anyRequest().authenticated()
+          // .requestMatchers(HttpMethod.GET).permitAll()
+          .requestMatchers("/auth/**").permitAll()
+          .anyRequest().authenticated()
         )
         .sessionManagement(sessionManager->
                 sessionManager 

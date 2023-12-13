@@ -33,7 +33,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String token = getTokenFromRequest(request);
         final String username;
 
-        if(token == null)
+        if (token==null)
         {
             filterChain.doFilter(request, response);
             return;
@@ -41,7 +41,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
         username=jwtService.getUsernameFromToken(token);
 
-        if (username == null && SecurityContextHolder.getContext().getAuthentication() == null)
+        if (username!=null && SecurityContextHolder.getContext().getAuthentication()==null)
         {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
@@ -60,7 +60,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private String getTokenFromRequest(HttpServletRequest request) {
 
-        final String authHeader= request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer "))
         {
