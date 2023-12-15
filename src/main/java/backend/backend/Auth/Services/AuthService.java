@@ -41,12 +41,14 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
-        Rol userRole = rolRepository.findByNamerol("USER")
+        Rol userRole = rolRepository.findByNamerol("DOCTOR")
                 .orElseThrow(() -> new RuntimeException("Role not found: USER"));
         
         String encodedPassword = passwordEncoder.encode(request.getPassword());
+        String encodedPassword_Veri = passwordEncoder.encode(request.getPass_verification_user());
 
         User user = User.builder()
+                .photo_user(request.getPhoto_user())
                 .name_user(request.getName_user())
                 .username(request.getUsername())
                 .lastname_user(request.getLastname_user())
@@ -56,7 +58,7 @@ public class AuthService {
                 .phone_user(request.getPhone_user())
                 .email_user(request.getEmail_user())
                 .password(encodedPassword)
-                .pass_verification_user(request.getPass_verification_user())
+                .pass_verification_user(encodedPassword_Veri)
                 .rol(userRole)
                 .build();
 
