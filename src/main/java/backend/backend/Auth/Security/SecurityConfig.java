@@ -17,23 +17,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-  private final JWTAuthenticationFilter jwtAuthenticationFilter;
-  private final AuthenticationProvider authProvider;
+    private final JWTAuthenticationFilter jwtAuthenticationFilter;
+    private final AuthenticationProvider authProvider;
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http
-        .csrf(csrf -> csrf
-            .disable())
-        .cors(Customizer.withDefaults())
-        .authorizeHttpRequests(authRequests -> authRequests
-            .requestMatchers("/auth/**", "http://localhost:4200/").permitAll()
-            .anyRequest().authenticated())
-        .sessionManagement(sessionManager -> sessionManager
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authenticationProvider(authProvider)
-        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-        .httpBasic(Customizer.withDefaults())
-        .build();
-  }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // Desbloquear las rutas del login y register
+        return http
+                .csrf(csrf -> csrf
+                        .disable())
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(authRequest -> authRequest
+                        .requestMatchers("/auth/**", "http:localhost/4200/**", "/swagger-ui/**", "/v3/**", "/v3/api-docs/swagger-config").permitAll()
+                        .anyRequest().authenticated())
+                .sessionManagement(sessionManager -> sessionManager
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
 }

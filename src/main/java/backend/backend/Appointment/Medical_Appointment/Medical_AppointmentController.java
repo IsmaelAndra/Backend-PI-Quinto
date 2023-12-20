@@ -15,34 +15,34 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/api/medical_appointment/")
+@RequestMapping("/api/medical_appointment")
 @CrossOrigin({"*"})
 public class Medical_AppointmentController {
     @Autowired 
     private Medical_AppointmentService medical_AppointmentService;
 
-    @PostMapping("/")
+    @PostMapping(value="save")
     @Operation(summary = "Crear una Cita Médica")
     public Medical_Appointment save(@RequestBody Medical_Appointment entity)
     {
         return medical_AppointmentService.save(entity);
     }
 
-    @GetMapping("/{id_medical}/")
+    @GetMapping("/{id_medical}")
     @Operation(summary = "Obtener una Cita Médica")
     public Medical_Appointment findMedical_Appointment(@PathVariable long id_medical)
     {
         return medical_AppointmentService.findById(id_medical);
     }
     
-    @PutMapping("/{id_medical}/")
+    @PutMapping("/{id_medical}")
     @Operation(summary = "Actualizar una Cita Médica")
     public Medical_Appointment update(@RequestBody Medical_Appointment entity)
     {
         return medical_AppointmentService.save(entity);
     }
 
-    @DeleteMapping("/{id_medical}/")
+    @DeleteMapping("/{id_medical}")
     @Operation(summary = "Eliminar una Cita Médica")
     public void deleteByID(@PathVariable long id_medical)
     {

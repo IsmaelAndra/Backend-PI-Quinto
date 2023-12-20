@@ -41,7 +41,7 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
-        Rol userRole = rolRepository.findByNamerol("DOCTOR")
+        Rol userRole = rolRepository.findByNamerol("USER")
                 .orElseThrow(() -> new RuntimeException("Role not found: USER"));
         
         String encodedPassword = passwordEncoder.encode(request.getPassword());
